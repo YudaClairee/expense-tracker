@@ -21,7 +21,7 @@ export default function Footer() {
                 <div className="text-2xl font-bold text-primary">SpendSense</div>
               </Link>
               <p className="mt-3 text-muted-foreground max-w-md">
-                Platform terdepan untuk mengelola keuangan pribadi dengan teknologi AI dan keamanan bank-grade. 
+                Platform terdepan untuk mengelola keuangan pribadi dengan teknologi AI. 
                 Mulai perjalanan finansial yang lebih cerdas bersama kami.
               </p>
             </div>
@@ -30,15 +30,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>hello@spendsense.id</span>
+                <span>djibyuda@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-muted-foreground">
                 <Phone className="w-4 h-4" />
-                <span>+62 21 1234 5678</span>
+                <span>+62 812 3456 7890</span>
               </div>
               <div className="flex items-center space-x-3 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                <span>Jakarta, Indonesia</span>
+                <span>Bekasi, Indonesia</span>
               </div>
             </div>
 
@@ -103,65 +103,6 @@ export default function Footer() {
                 Contact
               </Link>
             </nav>
-
-            <div className="pt-4">
-              <h5 className="font-medium text-card-foreground mb-3">Support</h5>
-              <nav className="space-y-2">
-                <Link href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Help Center
-                </Link>
-                <Link href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Community
-                </Link>
-                <Link href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Security
-                </Link>
-                <Link href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Status Page
-                </Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-
-        {/* Trust Badges */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="text-center space-y-4">
-            <p className="text-sm text-muted-foreground">Dipercaya oleh bank-bank terkemuka</p>
-            <div className="flex items-center justify-center space-x-8 opacity-60">
-              {/* Mock Bank Logos */}
-              <div className="text-xs font-semibold text-muted-foreground px-3 py-1 border border-border rounded">BCA</div>
-              <div className="text-xs font-semibold text-muted-foreground px-3 py-1 border border-border rounded">MANDIRI</div>
-              <div className="text-xs font-semibold text-muted-foreground px-3 py-1 border border-border rounded">BNI</div>
-              <div className="text-xs font-semibold text-muted-foreground px-3 py-1 border border-border rounded">BRI</div>
-              <div className="text-xs font-semibold text-muted-foreground px-3 py-1 border border-border rounded">GOPAY</div>
-              <div className="text-xs font-semibold text-muted-foreground px-3 py-1 border border-border rounded">OVO</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Security & Compliance */}
-        <div className="mt-8 grid md:grid-cols-3 gap-6 text-center">
-          <div className="bg-muted/30 rounded-lg p-4">
-            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-              <span className="text-primary font-bold text-sm">256</span>
-            </div>
-            <p className="text-sm font-medium text-card-foreground">SSL Encryption</p>
-            <p className="text-xs text-muted-foreground">Bank-grade security</p>
-          </div>
-          <div className="bg-muted/30 rounded-lg p-4">
-            <div className="w-8 h-8 bg-chart-2/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-              <span className="text-chart-2 font-bold text-xs">ISO</span>
-            </div>
-            <p className="text-sm font-medium text-card-foreground">ISO 27001 Certified</p>
-            <p className="text-xs text-muted-foreground">Security standard</p>
-          </div>
-          <div className="bg-muted/30 rounded-lg p-4">
-            <div className="w-8 h-8 bg-chart-3/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-              <span className="text-chart-3 font-bold text-xs">99.9%</span>
-            </div>
-            <p className="text-sm font-medium text-card-foreground">Uptime SLA</p>
-            <p className="text-xs text-muted-foreground">Always available</p>
           </div>
         </div>
       </div>
@@ -172,7 +113,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-sm text-muted-foreground">
-              © 2024 SpendSense. All rights reserved.
+              © 2025 SpendSense. All rights reserved.
             </div>
 
             {/* Legal Links */}

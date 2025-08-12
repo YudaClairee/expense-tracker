@@ -42,7 +42,7 @@ export function ExpenseChartClient({ chartData, totalRecords, error }: ExpenseCh
   // Onboarding state - no records yet
   if (totalRecords === 0) {
     return (
-      <Card className="bg-background border border-border rounded-lg p-4 sm:p-6 mt-10 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <Card className="bg-background border border-border rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
         <CardHeader className="text-center">
           <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
             <BarChart3 className="w-8 h-8 text-primary" />
@@ -77,12 +77,12 @@ export function ExpenseChartClient({ chartData, totalRecords, error }: ExpenseCh
 
   // Calculate total amount
   const totalAmount = chartData.reduce((sum, item) => sum + item.amount, 0)
-  const topCategory = chartData.length > 0 ? chartData.reduce((prev, current) => 
+  const topDate = chartData.length > 0 ? chartData.reduce((prev, current) => 
     prev.amount > current.amount ? prev : current
   ) : null
 
   return (
-    <Card className="bg-background border border-border rounded-lg p-4 sm:p-6 mt-10 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <Card className="w-full bg-background border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
       <CardHeader>
         <CardTitle>Grafik Pengeluaran</CardTitle>
         <CardDescription>
@@ -97,11 +97,11 @@ export function ExpenseChartClient({ chartData, totalRecords, error }: ExpenseCh
               dataKey="label"
               tickLine={false}
               tickMargin={10}
-              axisLine={false}
+              axisLine={true}
               tickFormatter={(value) => value.slice(0, 8)}
             />
             <YAxis
-              tickLine={false}
+              tickLine={true}
               tickMargin={10}
               axisLine={false}
               tickFormatter={(value) => `Rp ${(value / 1000).toFixed(0)}k`}
@@ -124,9 +124,9 @@ export function ExpenseChartClient({ chartData, totalRecords, error }: ExpenseCh
         <div className="flex gap-2 leading-none font-medium">
           <span>Total pengeluaran: Rp {totalAmount.toLocaleString('id-ID')}</span>
         </div>
-        {topCategory && (
+        {topDate && (
           <div className="text-muted-foreground leading-none">
-            Hari dengan pengeluaran terbesar: {topCategory.label} (Rp {topCategory.amount.toLocaleString('id-ID')})
+            Hari dengan pengeluaran terbesar: {topDate.label} (Rp {topDate.amount.toLocaleString('id-ID')})
           </div>
         )}
       </CardFooter>

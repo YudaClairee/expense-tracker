@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import addExpenseTracker from '@/actions/addExpenseRecord'
-import { BanknoteArrowDown, Loader2 } from "lucide-react";
+import {  Coins, Loader2 } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
@@ -46,7 +46,7 @@ export default function AddNewRecord() {
   return (
     <div className="border border-border rounded-lg p-4 sm:p-6 mt-10 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex items-center gap-2">
-        <BanknoteArrowDown className="w-6 h-6 text-primary" />
+        <Coins className="w-6 h-6 text-primary" />
         <div>
           <h2 className="text-lg font-semibold">Masukkan pengeluaran kamu</h2>
           <p className="text-sm text-muted-foreground">Kamu dapat mencatat pengeluaran kamu dengan mudah dan dapatkan insight cerdas dari AI untuk mengelola keuangan kamu.</p>

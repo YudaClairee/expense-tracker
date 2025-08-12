@@ -5,6 +5,7 @@ import { LogOut } from 'lucide-react';
 import React from 'react'
 import AddNewRecord from '@/components/dashboard/AddNewRecord';
 import { ExpenseChart } from '@/components/dashboard/ExpenseChart';
+import ExpenseStatistics from '@/components/dashboard/ExpenseStatistics';
 
 export default async function page() {
 
@@ -32,8 +33,9 @@ export default async function page() {
       </div>
 
       <AddNewRecord />
-      <div className='mt-10 w-3xl'>
+      <div className='mt-10 w-full flex gap-10'>
         <ExpenseChart />
+        <ExpenseStatistics />
       </div>
     </div>
   )
