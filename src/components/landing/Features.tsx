@@ -1,55 +1,31 @@
 'use client'
 
-import { BarChart3, PieChart, Wallet, Bell, Smartphone, Lock, Target, Calendar } from 'lucide-react'
+import { BarChart3, PieChart, Smartphone, Target } from 'lucide-react'
 
 const features = [
   {
-    icon: BarChart3,
-    title: "Analisis Mendalam",
-    description: "Visualisasi pengeluaran dengan grafik interaktif yang mudah dipahami. Lihat trend pengeluaran harian, mingguan, dan bulanan.",
+    icon: PieChart,
+    title: "AI Insight Cerdas",
+    description: "Dapatkan analisis dan saran finansial dari AI berdasarkan pola pengeluaran kamu. Rekomendasi personal untuk mengoptimalkan keuangan.",
     color: "bg-primary/10 text-primary"
   },
   {
-    icon: PieChart,
-    title: "Kategorisasi Otomatis",
-    description: "AI akan secara otomatis mengelompokkan transaksi berdasarkan kategori. Hemat waktu dan dapatkan insight yang akurat.",
+    icon: BarChart3,
+    title: "Tracking Pengeluaran",
+    description: "Catat dan pantau semua transaksi dengan mudah. Visualisasi data pengeluaran dalam grafik yang mudah dipahami.",
     color: "bg-chart-2/10 text-chart-2"
   },
   {
-    icon: Wallet,
-    title: "Multi-Akun Banking",
-    description: "Sinkronisasi dengan berbagai bank dan e-wallet. Kelola semua akun finansial dalam satu platform terpadu.",
+    icon: Target,
+    title: "Kategorisasi Otomatis",
+    description: "Sistem otomatis mengelompokkan transaksi berdasarkan kategori seperti makanan, transport, belanja, dll.",
     color: "bg-chart-3/10 text-chart-3"
   },
   {
-    icon: Bell,
-    title: "Smart Notifications",
-    description: "Dapatkan notifikasi cerdas saat pengeluaran mendekati budget atau ada transaksi mencurigakan.",
-    color: "bg-chart-4/10 text-chart-4"
-  },
-  {
-    icon: Target,
-    title: "Budget Planning",
-    description: "Set target budget untuk setiap kategori dan pantau progress secara real-time dengan rekomendasi personal.",
-    color: "bg-chart-5/10 text-chart-5"
-  },
-  {
-    icon: Lock,
-    title: "Keamanan Bank-Grade",
-    description: "Data kamu dilindungi dengan enkripsi bank-grade dan standar keamanan internasional ISO 27001.",
-    color: "bg-destructive/10 text-destructive"
-  },
-  {
     icon: Smartphone,
-    title: "Mobile First Design",
-    description: "Akses dimana saja, kapan saja. Interface yang responsif dan intuitif untuk semua perangkat.",
-    color: "bg-secondary/30 text-secondary-foreground"
-  },
-  {
-    icon: Calendar,
-    title: "Perencanaan Finansial",
-    description: "Tools perencanaan jangka panjang dengan proyeksi dan rekomendasi investasi berdasarkan pola pengeluaran.",
-    color: "bg-accent/30 text-accent-foreground"
+    title: "Interface Simpel",
+    description: "Desain yang clean dan mudah digunakan. Akses cepat untuk input transaksi dan lihat summary keuangan.",
+    color: "bg-chart-4/10 text-chart-4"
   }
 ]
 
@@ -64,13 +40,13 @@ export default function Features() {
             <span className="text-primary block">Keuangan yang Lebih Baik</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            SpendSense hadir dengan teknologi terdepan untuk memberikan kontrol penuh atas keuangan pribadi kamu. 
-            Dari analisis mendalam hingga keamanan bank-grade.
+            SpendSense membantu kamu melacak pengeluaran dengan mudah dan mendapatkan insight cerdas dari AI 
+            untuk mengelola keuangan lebih baik.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}
@@ -111,7 +87,7 @@ export default function Features() {
               ))}
             </div>
             <div className="text-left">
-              <p className="font-semibold text-card-foreground">Bergabung dengan 10,000+ pengguna aktif</p>
+              <p className="font-semibold text-card-foreground">Bergabung dengan 500+ pengguna aktif</p>
               <p className="text-sm text-muted-foreground">yang sudah merasakan manfaatnya</p>
             </div>
           </div>

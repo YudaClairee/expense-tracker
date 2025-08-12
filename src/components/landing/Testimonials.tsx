@@ -11,7 +11,7 @@ const testimonials = [
     location: "Jakarta",
     avatar: "AP",
     rating: 5,
-    content: "Setelah pakai SpendSense, akhirnya aku bisa tau kemana aja duit habis tiap bulan. Fitur kategorisasinya keren banget, otomatis detect pengeluaran buat makanan, transport, dll. Sekarang bisa nabung lebih konsisten!",
+    content: "Setelah pakai SpendSense, akhirnya aku bisa tau kemana aja duit habis tiap bulan. Fitur kategorisasinya otomatis detect pengeluaran buat makanan, transport, dll. AI insight-nya juga kasih saran buat hemat pengeluaran!",
     highlight: "kategorisasi otomatis"
   },
   {
@@ -21,8 +21,8 @@ const testimonials = [
     location: "Bandung",
     avatar: "SK",
     rating: 5,
-    content: "Dashboard analytics-nya detail banget! Bisa liat trend pengeluaran dari waktu ke waktu. Yang paling suka fitur budget planning-nya, jadi ada alert kalau udah mendekati limit. Recommended banget!",
-    highlight: "budget planning"
+    content: "Input transaksinya gampang banget, grafik pengeluarannya juga mudah dipahami. Yang paling suka AI-nya bisa ngasih rekomendasi personal berdasarkan pola spending aku. Jadi lebih aware sama keuangan!",
+    highlight: "AI insight"
   },
   {
     id: 3,
@@ -31,8 +31,8 @@ const testimonials = [
     location: "Yogyakarta",
     avatar: "RM",
     rating: 5,
-    content: "Sebagai freelancer yang income-nya ga tetap, SpendSense bantu banget buat ngatur cash flow. Bisa sync sama semua rekening dan e-wallet, jadi ga perlu ribet buka app satu-satu. UI/UX-nya juga user friendly!",
-    highlight: "multi-akun banking"
+    content: "Sebagai freelancer yang income-nya ga tetap, SpendSense bantu banget buat tracking cash flow. Interface-nya simpel dan user friendly, jadi ga ribet buat catat pengeluaran setiap hari.",
+    highlight: "tracking pengeluaran"
   },
   {
     id: 4,
@@ -41,8 +41,8 @@ const testimonials = [
     location: "Surabaya",
     avatar: "DA",
     rating: 5,
-    content: "Security-nya top! Sebagai developer, aku appreciate banget mereka pake enkripsi bank-grade. Data keuangan kan sensitif, jadi penting banget keamanannya. Plus, mobile app-nya smooth dan responsive.",
-    highlight: "keamanan bank-grade"
+    content: "App-nya ringan dan responsive. Yang keren, AI-nya bisa analisis spending pattern dan ngasih insight yang berguna. Sekarang jadi lebih tau di kategori mana aku boros dan harus dikurangi.",
+    highlight: "analisis AI"
   },
   {
     id: 5,
@@ -51,8 +51,8 @@ const testimonials = [
     location: "Medan",
     avatar: "MS",
     rating: 5,
-    content: "Fitur perencanaan finansial jangka panjangnya membantu banget buat nyiapin dana pendidikan anak. Bisa set goal dan tracking progress-nya. Interface-nya simpel, ga bikin ribet meski ga terlalu tech-savvy.",
-    highlight: "perencanaan finansial"
+    content: "Interface-nya simpel banget, cocok buat yang ga terlalu tech-savvy kayak aku. Bisa liat summary pengeluaran bulanan dengan mudah. AI-nya juga ngasih tips buat manage keuangan yang realistic.",
+    highlight: "interface simpel"
   },
   {
     id: 6,
@@ -61,8 +61,8 @@ const testimonials = [
     location: "Semarang",
     avatar: "BF",
     rating: 5,
-    content: "Notification system-nya cerdas banget! Auto alert kalau ada pengeluaran yang unusual atau budget udah mau habis. Sekarang jadi lebih disiplin ngatur keuangan bisnis dan personal. Game changer!",
-    highlight: "smart notifications"
+    content: "Buat ngatur keuangan bisnis kecil, SpendSense cukup membantu. Kategorisasi otomatis bikin tracking expense jadi lebih teratur. AI insight-nya juga memberikan perspective baru tentang cash flow management.",
+    highlight: "kategorisasi"
   }
 ]
 
@@ -198,20 +198,20 @@ export default function Testimonials() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-3xl lg:text-4xl font-bold text-primary">10,000+</div>
+            <div className="text-3xl lg:text-4xl font-bold text-primary">500+</div>
             <div className="text-muted-foreground">Pengguna Aktif</div>
           </div>
           <div>
-            <div className="text-3xl lg:text-4xl font-bold text-chart-2">4.9/5</div>
-            <div className="text-muted-foreground">Rating App Store</div>
+            <div className="text-3xl lg:text-4xl font-bold text-chart-2">4.8/5</div>
+            <div className="text-muted-foreground">Rating Pengguna</div>
           </div>
           <div>
-            <div className="text-3xl lg:text-4xl font-bold text-chart-3">1M+</div>
-            <div className="text-muted-foreground">Transaksi Diproses</div>
+            <div className="text-3xl lg:text-4xl font-bold text-chart-3">5,000+</div>
+            <div className="text-muted-foreground">Transaksi Dicatat</div>
           </div>
           <div>
-            <div className="text-3xl lg:text-4xl font-bold text-chart-4">99.9%</div>
-            <div className="text-muted-foreground">Uptime</div>
+            <div className="text-3xl lg:text-4xl font-bold text-chart-4">50+</div>
+            <div className="text-muted-foreground">AI Insights Harian</div>
           </div>
         </div>
       </div>

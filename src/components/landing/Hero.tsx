@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-chart-3/10 rounded-full blur-xl"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
