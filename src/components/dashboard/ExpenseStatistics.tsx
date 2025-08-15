@@ -25,7 +25,7 @@ export default async function ExpenseStatistics() {
 
   return (
     <div className='w-full'>
-      <Card className='shadow-sm hover:shadow-md transition-shadow duration-300'>
+      <Card className='bg-card shadow-sm hover:shadow-md transition-shadow duration-300'>
         <CardHeader>
           <CardTitle className='text-2xl font-bold'>Statistik Pengeluaran</CardTitle>
           <CardDescription className='text-md text-muted-foreground'>Disini kamu bisa melihat statistik pengeluaran kamu</CardDescription>
@@ -35,7 +35,7 @@ export default async function ExpenseStatistics() {
               <div className='bg-secondary-foreground/20 rounded-lg p-4'>
                 <h2 className='text-xl font-semibold'>Rata-rata Pengeluaran</h2>
                 <p className='text-md text-muted-foreground'>
-                  Rata-rata pengeluaran kamu adalah Rp {averageExpense?.toLocaleString('id-ID')}
+                  Rata-rata pengeluaran kamu adalah <span className='text-md font-bold text-foreground'>Rp {averageExpense?.toLocaleString('id-ID')}</span>
                 </p>
                 <span className='text-sm text-muted-foreground'>Berdasarkan {validDays} hari</span>
               </div>

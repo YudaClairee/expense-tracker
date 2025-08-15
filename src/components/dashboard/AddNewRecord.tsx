@@ -44,7 +44,7 @@ export default function AddNewRecord() {
   
 
   return (
-    <div className="border border-border rounded-lg p-4 sm:p-6 mt-10 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="bg-card border border-border rounded-lg p-4 sm:p-6 mt-10 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex items-center gap-2">
         <Coins className="w-6 h-6 text-primary" />
         <div>
@@ -79,7 +79,7 @@ export default function AddNewRecord() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-              className="w-full bg-background border border-border rounded-md p-2 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary focus-visible:ring-primary"
+              className="w-full bg-card border border-border rounded-md p-2 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary focus-visible:ring-primary"
             />
           </div>
           <div className="space-y-2">
@@ -90,7 +90,7 @@ export default function AddNewRecord() {
               id="date"
               required
               onFocus={(e) => e.target.showPicker()}
-              className="w-full bg-background border border-border rounded-md p-2 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary focus-visible:ring-primary"
+              className="w-full bg-card border border-border rounded-md p-2 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary focus-visible:ring-primary"
             />
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function AddNewRecord() {
               onValueChange={(value) => setCategory(value)}
               required
             >
-              <SelectTrigger className="w-full bg-background border border-border rounded-md p-2 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary focus-visible:ring-primary">
+              <SelectTrigger className="w-full bg-card border border-border rounded-md p-2 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary focus-visible:ring-primary">
                 <SelectValue placeholder="Pilih kategori" />
               </SelectTrigger>
               <SelectContent>

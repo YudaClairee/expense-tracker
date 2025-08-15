@@ -82,7 +82,7 @@ export function ExpenseChartClient({ chartData, totalRecords, error }: ExpenseCh
   ) : null
 
   return (
-    <Card className="w-full bg-background border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+    <Card className="w-full bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
       <CardHeader>
         <CardTitle>Grafik Pengeluaran</CardTitle>
         <CardDescription>

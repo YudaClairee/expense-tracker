@@ -6,6 +6,7 @@ import React from 'react'
 import AddNewRecord from '@/components/dashboard/AddNewRecord';
 import { ExpenseChart } from '@/components/dashboard/ExpenseChart';
 import ExpenseStatistics from '@/components/dashboard/ExpenseStatistics';
+import AIInsights from '@/components/dashboard/AIInsights';
 
 export default async function page() {
 
@@ -28,14 +29,18 @@ export default async function page() {
           </Button>
         </SignOutButton>
       </div>
-      <div className='mt-10 w-3xl'>
+      <div className='mt-10 md:w-3xl w-full'>
         <h2 className='text-xl font-semibold'>Kamu dapat mencatat pengeluaran kamu dengan mudah dan dapatkan insight cerdas dari AI untuk mengelola keuangan kamu.</h2>
       </div>
 
       <AddNewRecord />
-      <div className='mt-10 w-full flex gap-10'>
+      <div className='mt-10 w-full flex gap-10 md:flex-row flex-col'>
         <ExpenseChart />
         <ExpenseStatistics />
+      </div>
+
+      <div className='mt-10 w-full'>
+        <AIInsights />
       </div>
     </div>
   )
