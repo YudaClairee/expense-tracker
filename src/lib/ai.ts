@@ -9,11 +9,11 @@ interface RawInsight {
 }
 
 const openai = new OpenAI({
-  baseURL: 'https://openrouter.ai/api/v1',
+  baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
   defaultHeaders: {
-    'HTTP-Referer': process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-    'X-Title': 'ExpenseTracker AI',
+    "HTTP-Referer": "https://wallyai-app.netlify.app",
+    "X-Title": "WallyAI",
   },
 });
 
@@ -27,7 +27,7 @@ export interface ExpenseRecord {
 
 export interface AIInsight {
   id: string;
-  type: 'warning' | 'info' | 'success' | 'tip';
+  type: "warning" | "info" | "success" | "tip";
   title: string;
   message: string;
   action?: string;
@@ -73,15 +73,15 @@ export async function generateExpenseInsights(
     - Return ONLY valid JSON array, no markdown formatting, no additional text.`;
 
     const completion = await openai.chat.completions.create({
-      model: 'tngtech/deepseek-r1t2-chimera:free',
+      model: "tngtech/deepseek-r1t2-chimera:free",
       messages: [
         {
-          role: 'system',
+          role: "system",
           content:
-            'You are a professional Financial Advisor AI for Indonesian users. You analyze spending patterns and provide actionable, personalized insights in Bahasa Indonesia. You MUST return strict JSON format only.',
+            "You are a professional Financial Advisor AI for Indonesian users. You analyze spending patterns and provide actionable, personalized insights in Bahasa Indonesia. You MUST return strict JSON format only.",
         },
         {
-          role: 'user',
+          role: "user",
           content: prompt,
         },
       ],
@@ -91,19 +91,19 @@ export async function generateExpenseInsights(
 
     const response = completion.choices[0].message.content;
     if (!response) {
-      throw new Error('No response from AI');
+      throw new Error("No response from AI");
     }
 
     // Clean the response by removing markdown code blocks if present
     let cleanedResponse = response.trim();
-    if (cleanedResponse.startsWith('```json')) {
+    if (cleanedResponse.startsWith("```json")) {
       cleanedResponse = cleanedResponse
-        .replace(/^```json\s*/, '')
-        .replace(/\s*```$/, '');
-    } else if (cleanedResponse.startsWith('```')) {
+        .replace(/^```json\s*/, "")
+        .replace(/\s*```$/, "");
+    } else if (cleanedResponse.startsWith("```")) {
       cleanedResponse = cleanedResponse
-        .replace(/^```\s*/, '')
-        .replace(/\s*```$/, '');
+        .replace(/^```\s*/, "")
+        .replace(/\s*```$/, "");
     }
 
     // Parse AI response
@@ -113,9 +113,9 @@ export async function generateExpenseInsights(
     const formattedInsights = insights.map(
       (insight: RawInsight, index: number) => ({
         id: `ai-${Date.now()}-${index}`,
-        type: insight.type || 'info',
-        title: insight.title || 'AI Insight',
-        message: insight.message || 'Analysis complete',
+        type: insight.type || "info",
+        title: insight.title || "AI Insight",
+        message: insight.message || "Analysis complete",
         action: insight.action,
         confidence: insight.confidence || 0.8,
       })
@@ -123,17 +123,17 @@ export async function generateExpenseInsights(
 
     return formattedInsights;
   } catch (error) {
-    console.error('❌ Error generating AI insights:', error);
+    console.error("❌ Error generating AI insights:", error);
 
     // Fallback to mock insights if AI fails
     return [
       {
-        id: 'fallback-1',
-        type: 'info',
-        title: 'AI Analysis Unavailable',
+        id: "fallback-1",
+        type: "info",
+        title: "AI Analysis Unavailable",
         message:
-          'Unable to generate personalized insights at this time. Please try again later.',
-        action: 'Refresh insights',
+          "Unable to generate personalized insights at this time. Please try again later.",
+        action: "Refresh insights",
         confidence: 0.5,
       },
     ];
@@ -169,15 +169,15 @@ export async function generateAIAnswer(
     - Return only the answer text, no additional formatting.`;
 
     const completion = await openai.chat.completions.create({
-      model: 'deepseek/deepseek-chat-v3-0324:free',
+      model: "deepseek/deepseek-chat-v3-0324:free",
       messages: [
         {
-          role: 'system',
+          role: "system",
           content:
-            'You are a helpful Financial Advisor AI for Indonesian users. You provide specific, actionable answers based on expense data in Bahasa Indonesia. Be concise but thorough.',
+            "You are a helpful Financial Advisor AI for Indonesian users. You provide specific, actionable answers based on expense data in Bahasa Indonesia. Be concise but thorough.",
         },
         {
-          role: 'user',
+          role: "user",
           content: prompt,
         },
       ],
@@ -187,12 +187,12 @@ export async function generateAIAnswer(
 
     const response = completion.choices[0].message.content;
     if (!response) {
-      throw new Error('No response from AI');
+      throw new Error("No response from AI");
     }
 
     return response.trim();
   } catch (error) {
-    console.error('❌ Error generating AI answer:', error);
+    console.error("❌ Error generating AI answer:", error);
     return "I'm unable to provide a detailed answer at the moment. Please try refreshing the insights or check your connection.";
   }
 }

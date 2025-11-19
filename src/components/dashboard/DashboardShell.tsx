@@ -12,7 +12,6 @@ import {
   Menu,
   X,
   LogOut,
-  PlusCircle,
   History,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
