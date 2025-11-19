@@ -2,6 +2,7 @@
 
 import { Check, Clock, Zap, Crown, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 const plans = [
   {
@@ -18,7 +19,8 @@ const plans = [
     popular: false,
     available: true,
     icon: Zap,
-    color: "border-border"
+    color: "border-border bg-card",
+    buttonVariant: "outline" as const
   },
   {
     name: "Pro",
@@ -37,7 +39,8 @@ const plans = [
     popular: true,
     available: false,
     icon: Crown,
-    color: "border-primary"
+    color: "border-primary/50 bg-primary/5 shadow-2xl shadow-primary/10",
+    buttonVariant: "default" as const
   },
   {
     name: "Enterprise",
@@ -55,95 +58,100 @@ const plans = [
     popular: false,
     available: false,
     icon: Sparkles,
-    color: "border-chart-2"
+    color: "border-border bg-card",
+    buttonVariant: "outline" as const
   }
 ]
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-20 lg:py-32 bg-muted/20 relative overflow-hidden">
+    <section id="pricing" className="py-24 lg:py-32 bg-background relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-1/4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-20 right-1/4 w-32 h-32 bg-chart-2/10 rounded-full blur-2xl"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-full h-1/2 bg-gradient-to-r from-primary/5 via-chart-2/5 to-primary/5 blur-3xl transform -skew-y-6"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground">
+        <div className="text-center space-y-4 mb-20">
+          <h2 className="text-3xl lg:text-5xl font-bold text-foreground tracking-tight">
             Pilih Paket yang
-            <span className="text-primary block">Sesuai Kebutuhan</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-chart-2 block mt-2">Sesuai Kebutuhan</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Mulai gratis dan upgrade sesuai kebutuhan. Semua paket dilengkapi dengan keamanan bank-grade 
             dan support terbaik dari tim kami.
           </p>
         </div>
 
         {/* Coming Soon Banner */}
-        <div className="mb-12">
-          <div className="bg-gradient-to-r from-primary/10 via-chart-2/10 to-primary/10 border border-primary/20 rounded-2xl p-6 text-center">
-            <div className="flex items-center justify-center space-x-3 mb-3">
-              <Clock className="w-6 h-6 text-primary" />
-              <span className="text-lg font-semibold text-foreground">Paket Premium Coming Soon!</span>
+        <div className="mb-16 max-w-3xl mx-auto">
+          <div className="bg-gradient-to-r from-primary/10 via-chart-2/10 to-primary/10 border border-primary/20 rounded-2xl p-8 text-center backdrop-blur-sm">
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <div className="p-2 bg-primary/20 rounded-full">
+                <Clock className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-xl font-bold text-foreground">Paket Premium Coming Soon!</span>
             </div>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-6 text-lg">
               Kami sedang mempersiapkan fitur-fitur canggih untuk paket Pro dan Enterprise. 
-              Daftar waitlist sekarang dan dapatkan early bird discount hingga 50%!
+              Daftar waitlist sekarang dan dapatkan <span className="font-bold text-primary">early bird discount hingga 50%!</span>
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
               Join Waitlist
             </Button>
           </div>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`relative bg-card border-2 ${plan.color} rounded-3xl p-8 transition-all duration-300 hover:shadow-xl ${
-                plan.popular ? 'scale-105 ring-2 ring-primary/50' : 'hover:-translate-y-2'
-              } ${!plan.available ? 'opacity-75' : ''}`}
+              className={cn(
+                "relative border-2 rounded-3xl p-8 transition-all duration-300",
+                plan.color,
+                plan.popular ? 'scale-105 z-10' : 'hover:-translate-y-2 opacity-80 hover:opacity-100'
+              )}
             >
               {/* Popular Badge */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold">
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-primary to-chart-2 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
                     Most Popular
                   </div>
                 </div>
               )}
 
               {/* Not Available Badge */}
-              {!plan.available && (
-                <div className="absolute -top-4 right-4">
+              {!plan.available && !plan.popular && (
+                <div className="absolute top-4 right-4">
                   <div className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
                     <Clock className="w-3 h-3" />
-                    <span>Coming Soon</span>
+                    <span>Soon</span>
                   </div>
                 </div>
               )}
 
               {/* Icon */}
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6 ${
-                plan.available ? 'bg-primary/10 text-primary' : 'bg-muted/50 text-muted-foreground'
-              }`}>
-                <plan.icon className="w-6 h-6" />
+              <div className={cn(
+                "inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6",
+                plan.available ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'
+              )}>
+                <plan.icon className="w-7 h-7" />
               </div>
 
               {/* Plan Info */}
               <div className="space-y-4 mb-8">
-                <h3 className="text-xl font-bold text-card-foreground">{plan.name}</h3>
-                <div className="space-y-2">
+                <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
+                <div className="space-y-1">
                   <div className="flex items-baseline space-x-1">
-                    <span className="text-3xl font-bold text-foreground">{plan.price}</span>
+                    <span className="text-4xl font-bold text-foreground">{plan.price}</span>
                     {plan.period && (
-                      <span className="text-muted-foreground text-sm">{plan.period}</span>
+                      <span className="text-muted-foreground text-sm font-medium">{plan.period}</span>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground">{plan.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{plan.description}</p>
                 </div>
               </div>
 
@@ -151,27 +159,21 @@ export default function Pricing() {
               <div className="space-y-4 mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-start space-x-3">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                      plan.available ? 'bg-primary/10' : 'bg-muted/50'
-                    }`}>
-                      <Check className={`w-3 h-3 ${
-                        plan.available ? 'text-primary' : 'text-muted-foreground'
-                      }`} />
+                    <div className={cn(
+                      "w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5",
+                      plan.available ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'
+                    )}>
+                      <Check className="w-3 h-3" />
                     </div>
-                    <span className="text-sm text-card-foreground">{feature}</span>
+                    <span className="text-sm text-foreground/80">{feature}</span>
                   </div>
                 ))}
               </div>
 
               {/* CTA Button */}
               <Button 
-                className={`w-full ${
-                  plan.available 
-                    ? plan.popular 
-                      ? 'bg-primary hover:bg-primary/90 text-primary-foreground' 
-                      : 'bg-secondary hover:bg-secondary/90 text-secondary-foreground'
-                    : 'bg-muted text-muted-foreground cursor-not-allowed'
-                }`}
+                className="w-full h-12 text-base font-semibold"
+                variant={plan.buttonVariant}
                 disabled={!plan.available}
               >
                 {plan.available ? 'Mulai Sekarang' : 'Coming Soon'}
@@ -181,25 +183,25 @@ export default function Pricing() {
         </div>
 
         {/* FAQ Preview */}
-        <div className="mt-16 text-center">
-          <div className="bg-card border border-border rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-xl font-semibold text-card-foreground mb-4">Frequently Asked Questions</h3>
-            <div className="grid md:grid-cols-2 gap-6 text-left">
+        <div className="mt-24 text-center">
+          <div className="bg-card border border-border rounded-3xl p-8 lg:p-12 max-w-4xl mx-auto shadow-sm">
+            <h3 className="text-2xl font-bold text-foreground mb-8">Frequently Asked Questions</h3>
+            <div className="grid md:grid-cols-2 gap-8 text-left">
               <div>
-                <h4 className="font-medium text-card-foreground mb-2">Kapan paket Pro tersedia?</h4>
-                <p className="text-sm text-muted-foreground">Paket Pro akan launch dalam Q2 2024. Join waitlist untuk update terbaru!</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">Kapan paket Pro tersedia?</h4>
+                <p className="text-muted-foreground leading-relaxed">Paket Pro akan launch dalam Q2 2024. Join waitlist untuk update terbaru!</p>
               </div>
               <div>
-                <h4 className="font-medium text-card-foreground mb-2">Apakah ada trial gratis?</h4>
-                <p className="text-sm text-muted-foreground">Ya! Paket Pro akan include 14 hari trial gratis tanpa commitment.</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">Apakah ada trial gratis?</h4>
+                <p className="text-muted-foreground leading-relaxed">Ya! Paket Pro akan include 14 hari trial gratis tanpa commitment.</p>
               </div>
               <div>
-                <h4 className="font-medium text-card-foreground mb-2">Bisa upgrade/downgrade kapan saja?</h4>
-                <p className="text-sm text-muted-foreground">Tentu! Kamu bisa ubah paket kapan saja sesuai kebutuhan.</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">Bisa upgrade/downgrade kapan saja?</h4>
+                <p className="text-muted-foreground leading-relaxed">Tentu! Kamu bisa ubah paket kapan saja sesuai kebutuhan.</p>
               </div>
               <div>
-                <h4 className="font-medium text-card-foreground mb-2">Bagaimana dengan keamanan data?</h4>
-                <p className="text-sm text-muted-foreground">Semua paket menggunakan enkripsi bank-grade dan compliance ISO 27001.</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">Bagaimana dengan keamanan data?</h4>
+                <p className="text-muted-foreground leading-relaxed">Semua paket menggunakan enkripsi bank-grade dan compliance ISO 27001.</p>
               </div>
             </div>
           </div>

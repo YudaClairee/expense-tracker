@@ -52,7 +52,7 @@ export default function HistoricalExpenseTable() {
   };
 
   return (
-    <Card className="w-full mt-10 shadow-lg border-none bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+    <Card className="w-full shadow-lg border-none bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100">
           Riwayat Pengeluaran

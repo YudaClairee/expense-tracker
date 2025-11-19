@@ -1,53 +1,58 @@
-import { Button } from '@/components/ui/button';
-import { SignOutButton, UserButton } from '@clerk/nextjs';
-import { currentUser } from '@clerk/nextjs/server'
-import { LogOut } from 'lucide-react';
-import React from 'react'
-import AddNewRecord from '@/components/dashboard/AddNewRecord';
-import { ExpenseChart } from '@/components/dashboard/ExpenseChart';
-import ExpenseStatistics from '@/components/dashboard/ExpenseStatistics';
-import AIInsights from '@/components/dashboard/AIInsights';
-
-import HistoricalExpenseTable from '@/components/dashboard/HistoricalExpenseTable';
+import React from "react";
+import { currentUser } from "@clerk/nextjs/server";
+import AddNewRecord from "@/components/dashboard/AddNewRecord";
+import { ExpenseChart } from "@/components/dashboard/ExpenseChart";
+import ExpenseStatistics from "@/components/dashboard/ExpenseStatistics";
+import AIInsights from "@/components/dashboard/AIInsights";
+import HistoricalExpenseTable from "@/components/dashboard/HistoricalExpenseTable";
+import { SignOutButton } from "@clerk/nextjs";
+import { LogOut } from "lucide-react";
 
 export default async function page() {
-
   const user = await currentUser();
+
   return (
-    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-16'>
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-2'>
-          <UserButton appearance={{
-            elements: {
-              avatarBox: "!bg-primary !rounded-full !size-10",
-            },
-          }} />
-          <h1 className='text-2xl font-bold'>Haloo, {user?.firstName}</h1>
+    <div className="container mx-auto px-4 py-6 md:px-6 lg:px-8 space-y-6">
+      {/* Header Halaman */}
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-row justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+            <p className="text-muted-foreground">
+              Selamat datang kembali, {user?.firstName}. Ini ringkasan keuangan
+              kamu.
+            </p>
+          </div>
+          <div className="bg-green-400 px-4 py-2 text-white rounded-md hover:bg-green-500 cursor-pointer flex items-center gap-2">
+            <LogOut className="h-4 w-4" />
+            <SignOutButton />
+          </div>
         </div>
-        <SignOutButton>
-          <Button>
-            <LogOut className='w-4 h-4' />
-            Sign Out
-          </Button>
-        </SignOutButton>
-      </div>
-      <div className='mt-10 md:w-3xl w-full'>
-        <h2 className='text-xl font-semibold'>Kamu dapat mencatat pengeluaran kamu dengan mudah dan dapatkan insight cerdas dari AI untuk mengelola keuangan kamu.</h2>
+        <div className="flex items-center gap-2">
+          {/* Tombol Tambah Catatan Baru */}
+          <AddNewRecord />
+        </div>
       </div>
 
-      <AddNewRecord />
-      <div className='mt-10 w-full flex gap-10 md:flex-row flex-col'>
-        <ExpenseChart />
-        <ExpenseStatistics />
+      {/* Stats & Charts Grid */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+        <div className="col-span-4">
+          <ExpenseChart />
+        </div>
+        <div className="col-span-3">
+          <ExpenseStatistics />
+        </div>
       </div>
 
-      <div className='mt-10 w-full'>
+      {/* AI Insights */}
+      <div className="grid gap-4 md:grid-cols-1">
         <AIInsights />
       </div>
 
-      <div className='mt-10 w-full'>
+      {/* Recent Transactions / History */}
+      <div className="grid gap-4 md:grid-cols-1">
         <HistoricalExpenseTable />
       </div>
     </div>
-  )
+  );
 }

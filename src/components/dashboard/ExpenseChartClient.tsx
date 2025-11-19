@@ -66,7 +66,7 @@ export function ExpenseChartClient({ chartData, totalRecords, error }: ExpenseCh
   // Error state
   if (error) {
     return (
-      <Card className="bg-background border border-border rounded-lg p-4 sm:p-6 mt-10 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <Card className="bg-background border border-border rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
         <CardHeader className="text-center">
           <CardTitle className="text-destructive">Error</CardTitle>
           <CardDescription>{error}</CardDescription>

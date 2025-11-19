@@ -2,6 +2,7 @@
 
 import { Star, Quote } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { cn } from '@/lib/utils'
 
 const testimonials = [
   {
@@ -77,75 +78,75 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <section id="testimonials" className="py-20 lg:py-32 bg-background relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-chart-2/10 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground">
+        <div className="text-center space-y-4 mb-20">
+          <h2 className="text-3xl lg:text-5xl font-bold text-foreground tracking-tight">
             Apa Kata Mereka tentang
-            <span className="text-primary block">SpendSense?</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-chart-2 block mt-2">SpendSense?</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Ribuan pengguna sudah merasakan perubahan positif dalam mengatur keuangan mereka.
             Dengar cerita sukses mereka!
           </p>
         </div>
 
         {/* Main Testimonial */}
-        <div className="mb-16">
-          <div className="bg-card border border-border rounded-3xl p-8 lg:p-12 relative overflow-hidden">
+        <div className="mb-20">
+          <div className="bg-card border border-border rounded-3xl p-8 lg:p-12 relative overflow-hidden shadow-lg">
             {/* Quote Icon */}
-            <div className="absolute top-6 right-6 opacity-10">
-              <Quote className="w-24 h-24 text-primary" />
+            <div className="absolute top-6 right-6 opacity-5">
+              <Quote className="w-32 h-32 text-primary" />
             </div>
 
-            <div className="relative z-10">
-              {/* Stars */}
-              <div className="flex space-x-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-
-              {/* Content */}
-              <blockquote className="text-xl lg:text-2xl text-card-foreground leading-relaxed mb-8">
-                &quot;{testimonials[currentTestimonial].content}&quot;
-              </blockquote>
-
-              {/* Author */}
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary to-chart-2 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                  {testimonials[currentTestimonial].avatar}
+            <div className="relative z-10 grid lg:grid-cols-3 gap-12 items-center">
+              <div className="lg:col-span-2 space-y-8">
+                {/* Stars */}
+                <div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                  ))}
                 </div>
+
+                {/* Content */}
+                <blockquote className="text-xl lg:text-3xl font-medium text-card-foreground leading-relaxed">
+                  &quot;{testimonials[currentTestimonial].content}&quot;
+                </blockquote>
+
+                {/* Author */}
                 <div>
-                  <div className="font-semibold text-card-foreground text-lg">
+                  <div className="font-bold text-card-foreground text-xl">
                     {testimonials[currentTestimonial].name}
                   </div>
-                  <div className="text-muted-foreground">
+                  <div className="text-muted-foreground text-lg">
                     {testimonials[currentTestimonial].role} • {testimonials[currentTestimonial].location}
                   </div>
+                </div>
+              </div>
+
+              {/* Avatar Large */}
+              <div className="flex justify-center lg:justify-end">
+                <div className="w-40 h-40 bg-gradient-to-br from-primary to-chart-2 rounded-full flex items-center justify-center text-white font-bold text-4xl shadow-2xl ring-8 ring-background">
+                  {testimonials[currentTestimonial].avatar}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Navigation Dots */}
-          <div className="flex justify-center space-x-2 mt-8">
+          <div className="flex justify-center space-x-3 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300",
                   index === currentTestimonial 
                     ? 'bg-primary w-8' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
+                    : 'bg-muted w-2 hover:bg-primary/50'
+                )}
+                aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
@@ -156,63 +157,41 @@ export default function Testimonials() {
           {testimonials.slice(0, 6).map((testimonial, index) => (
             <div 
               key={testimonial.id}
-              className={`bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+              className={cn(
+                "bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
                 index === currentTestimonial ? 'ring-2 ring-primary/50 bg-primary/5' : ''
-              }`}
+              )}
             >
-              {/* Stars */}
-              <div className="flex space-x-1 mb-3">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-chart-2 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-card-foreground">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {testimonial.role}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex space-x-0.5">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
               </div>
 
-              {/* Highlight */}
-              <div className="inline-block bg-primary/10 text-primary text-xs font-medium px-2 py-1 rounded-full mb-3">
-                {testimonial.highlight}
-              </div>
-
-              {/* Content Preview */}
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
-                {testimonial.content.substring(0, 120)}...
+              <p className="text-muted-foreground leading-relaxed mb-4 line-clamp-4">
+                &quot;{testimonial.content}&quot;
               </p>
 
-              {/* Author Mini */}
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-primary to-chart-2 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                  {testimonial.avatar}
-                </div>
-                <div>
-                  <div className="font-medium text-card-foreground text-sm">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {testimonial.location}
-                  </div>
-                </div>
+              <div className="inline-block bg-secondary text-secondary-foreground text-xs font-medium px-3 py-1 rounded-full">
+                {testimonial.highlight}
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-3xl lg:text-4xl font-bold text-primary">500+</div>
-            <div className="text-muted-foreground">Pengguna Aktif</div>
-          </div>
-          <div>
-            <div className="text-3xl lg:text-4xl font-bold text-chart-2">4.8/5</div>
-            <div className="text-muted-foreground">Rating Pengguna</div>
-          </div>
-          <div>
-            <div className="text-3xl lg:text-4xl font-bold text-chart-3">5,000+</div>
-            <div className="text-muted-foreground">Transaksi Dicatat</div>
-          </div>
-          <div>
-            <div className="text-3xl lg:text-4xl font-bold text-chart-4">50+</div>
-            <div className="text-muted-foreground">AI Insights Harian</div>
-          </div>
         </div>
       </div>
     </section>

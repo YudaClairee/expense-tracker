@@ -4,16 +4,21 @@ import Features from "@/components/landing/Features";
 import Footer from "@/components/landing/Footer";
 import Testimonials from "@/components/landing/Testimonials";
 import Pricing from "@/components/landing/Pricing";
+import HowItWorks from "@/components/landing/HowItWorks";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background selection:bg-primary/20 selection:text-primary">
       <Navbar />
-      <Hero />
-      <Features />
-      <Testimonials />
-      <Pricing />
+      <main>
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <Testimonials />
+        <Pricing />
+      </main>
       <Footer />
     </div>
   );
 }
+

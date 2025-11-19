@@ -1,15 +1,23 @@
-import React from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import getBestWorstExpense from '@/actions/getBestWorstExpense'
-import getUserRecord from '@/actions/getUserRecord'
-import { BanknoteArrowDown, BanknoteArrowUp } from 'lucide-react';
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import getBestWorstExpense from "@/actions/getBestWorstExpense";
+import getUserRecord from "@/actions/getUserRecord";
+import { ArrowDown, ArrowUp, Wallet } from "lucide-react";
 
 export default async function ExpenseStatistics() {
   const { bestExpense, worstExpense, error } = await getBestWorstExpense();
   const userRecordResult = await getUserRecord();
 
   if (error || !userRecordResult) {
-    return <div>Error: {error || "Failed to fetch user records"}</div>;
+    return (
+      <Card className="bg-destructive/10">
+        <CardContent className="pt-6">
+          <p className="text-destructive">
+            Error: {error || "Gagal mengambil data pengeluaran"}
+          </p>
+        </CardContent>
+      </Card>
+    );
   }
 
   const { record, daysWithRecords, error: recordError } = userRecordResult;
@@ -18,48 +26,72 @@ export default async function ExpenseStatistics() {
   const validDays =
     daysWithRecords && daysWithRecords > 0 ? daysWithRecords : 1;
   const averageExpense = validRecord / validDays;
-  
+
   if (recordError) {
-    return <div>Error: {recordError}</div>;
+    return (
+      <Card className="bg-destructive/10">
+        <CardContent className="pt-6">
+          <p className="text-destructive">Error: {recordError}</p>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
-    <div className='w-full'>
-      <Card className='bg-card shadow-sm hover:shadow-md transition-shadow duration-300'>
-        <CardHeader>
-          <CardTitle className='text-2xl font-bold'>Statistik Pengeluaran</CardTitle>
-          <CardDescription className='text-md text-muted-foreground'>Disini kamu bisa melihat statistik pengeluaran kamu</CardDescription>
+    <div className="grid gap-4 grid-cols-1">
+      {/* Kartu Rata-rata Pengeluaran */}
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle className="text-sm font-medium">
+            Rata-rata Pengeluaran Harian
+          </CardTitle>
+          <Wallet className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-            <div className='flex flex-col gap-4'>
-              <div className='bg-secondary-foreground/20 rounded-lg p-4'>
-                <h2 className='text-xl font-semibold'>Rata-rata Pengeluaran</h2>
-                <p className='text-md text-muted-foreground'>
-                  Rata-rata pengeluaran kamu adalah <span className='text-md font-bold text-foreground'>Rp {averageExpense?.toLocaleString('id-ID')}</span>
-                </p>
-                <span className='text-sm text-muted-foreground'>Berdasarkan {validDays} hari</span>
-              </div>
-              <div className='grid grid-cols-2 gap-4'>
-                <div className='bg-red-500/10 rounded-lg p-4 flex flex-col items-center gap-2'>
-                <BanknoteArrowUp className='w-10 h-10 text-red-500' />
-                  <h2 className='text-xl font-semibold text-center text-red-500'>Pengeluaran Terbesar</h2>
-                  <p className='text-lg font-bold text-center text-red-600'>
-                    Rp {worstExpense?.toLocaleString('id-ID')}
-                  </p>
-                </div>
-                <div className='bg-accent rounded-lg p-4 flex flex-col items-center gap-2'>
-                <BanknoteArrowDown className='w-10 h-10 text-green-500' />
-                  <h2 className='text-xl font-semibold text-center text-green-500'>Pengeluaran Terkecil</h2>
-                  <p className='text-lg font-bold text-center text-green-600'>
-                    Rp {bestExpense?.toLocaleString('id-ID')}
-                  </p>
-                </div>
-              </div>
-              
+          <div className="text-2xl font-bold">
+            Rp {averageExpense?.toLocaleString("id-ID")}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Berdasarkan {validDays} hari aktivitas
+          </p>
+        </CardContent>
+      </Card>
 
-            </div>
+      {/* Kartu Pengeluaran Tertinggi */}
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle className="text-sm font-medium">
+            Pengeluaran Tertinggi
+          </CardTitle>
+          <ArrowUp className="h-4 w-4 text-red-500" />
+        </CardHeader>
+        <CardContent>
+          <div className="text-2xl font-bold text-red-600">
+            Rp {worstExpense?.toLocaleString("id-ID")}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Transaksi terbesar kamu
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Kartu Pengeluaran Terendah */}
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle className="text-sm font-medium">
+            Pengeluaran Terendah
+          </CardTitle>
+          <ArrowDown className="h-4 w-4 text-green-500" />
+        </CardHeader>
+        <CardContent>
+          <div className="text-2xl font-bold text-green-600">
+            Rp {bestExpense?.toLocaleString("id-ID")}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Transaksi terkecil kamu
+          </p>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
