@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { Star, Quote } from 'lucide-react'
-import { useState, useEffect } from 'react'
-import { cn } from '@/lib/utils'
+import { Star, Quote } from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -12,8 +12,9 @@ const testimonials = [
     location: "Jakarta",
     avatar: "AP",
     rating: 5,
-    content: "Setelah pakai SpendSense, akhirnya aku bisa tau kemana aja duit habis tiap bulan. Fitur kategorisasinya otomatis detect pengeluaran buat makanan, transport, dll. AI insight-nya juga kasih saran buat hemat pengeluaran!",
-    highlight: "kategorisasi otomatis"
+    content:
+      "Setelah pakai WallyAI, akhirnya aku bisa tau kemana aja duit habis tiap bulan. Fitur kategorisasinya otomatis detect pengeluaran buat makanan, transport, dll. AI insight-nya juga kasih saran buat hemat pengeluaran!",
+    highlight: "kategorisasi otomatis",
   },
   {
     id: 2,
@@ -22,8 +23,9 @@ const testimonials = [
     location: "Bandung",
     avatar: "SK",
     rating: 5,
-    content: "Input transaksinya gampang banget, grafik pengeluarannya juga mudah dipahami. Yang paling suka AI-nya bisa ngasih rekomendasi personal berdasarkan pola spending aku. Jadi lebih aware sama keuangan!",
-    highlight: "AI insight"
+    content:
+      "Input transaksinya gampang banget, grafik pengeluarannya juga mudah dipahami. Yang paling suka AI-nya bisa ngasih rekomendasi personal berdasarkan pola spending aku. Jadi lebih aware sama keuangan!",
+    highlight: "AI insight",
   },
   {
     id: 3,
@@ -32,8 +34,9 @@ const testimonials = [
     location: "Yogyakarta",
     avatar: "RM",
     rating: 5,
-    content: "Sebagai freelancer yang income-nya ga tetap, SpendSense bantu banget buat tracking cash flow. Interface-nya simpel dan user friendly, jadi ga ribet buat catat pengeluaran setiap hari.",
-    highlight: "tracking pengeluaran"
+    content:
+      "Sebagai freelancer yang income-nya ga tetap, WallyAI bantu banget buat tracking cash flow. Interface-nya simpel dan user friendly, jadi ga ribet buat catat pengeluaran setiap hari.",
+    highlight: "tracking pengeluaran",
   },
   {
     id: 4,
@@ -42,8 +45,9 @@ const testimonials = [
     location: "Surabaya",
     avatar: "DA",
     rating: 5,
-    content: "App-nya ringan dan responsive. Yang keren, AI-nya bisa analisis spending pattern dan ngasih insight yang berguna. Sekarang jadi lebih tau di kategori mana aku boros dan harus dikurangi.",
-    highlight: "analisis AI"
+    content:
+      "App-nya ringan dan responsive. Yang keren, AI-nya bisa analisis spending pattern dan ngasih insight yang berguna. Sekarang jadi lebih tau di kategori mana aku boros dan harus dikurangi.",
+    highlight: "analisis AI",
   },
   {
     id: 5,
@@ -52,8 +56,9 @@ const testimonials = [
     location: "Medan",
     avatar: "MS",
     rating: 5,
-    content: "Interface-nya simpel banget, cocok buat yang ga terlalu tech-savvy kayak aku. Bisa liat summary pengeluaran bulanan dengan mudah. AI-nya juga ngasih tips buat manage keuangan yang realistic.",
-    highlight: "interface simpel"
+    content:
+      "Interface-nya simpel banget, cocok buat yang ga terlalu tech-savvy kayak aku. Bisa liat summary pengeluaran bulanan dengan mudah. AI-nya juga ngasih tips buat manage keuangan yang realistic.",
+    highlight: "interface simpel",
   },
   {
     id: 6,
@@ -62,33 +67,39 @@ const testimonials = [
     location: "Semarang",
     avatar: "BF",
     rating: 5,
-    content: "Buat ngatur keuangan bisnis kecil, SpendSense cukup membantu. Kategorisasi otomatis bikin tracking expense jadi lebih teratur. AI insight-nya juga memberikan perspective baru tentang cash flow management.",
-    highlight: "kategorisasi"
-  }
-]
+    content:
+      "Buat ngatur keuangan bisnis kecil, WallyAI cukup membantu. Kategorisasi otomatis bikin tracking expense jadi lebih teratur. AI insight-nya juga memberikan perspective baru tentang cash flow management.",
+    highlight: "kategorisasi",
+  },
+];
 
 export default function Testimonials() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section id="testimonials" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section
+      id="testimonials"
+      className="py-24 lg:py-32 bg-background relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center space-y-4 mb-20">
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground tracking-tight">
             Apa Kata Mereka tentang
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-chart-2 block mt-2">SpendSense?</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-chart-2 block mt-2">
+              WallyAI?
+            </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Ribuan pengguna sudah merasakan perubahan positif dalam mengatur keuangan mereka.
-            Dengar cerita sukses mereka!
+            Ribuan pengguna sudah merasakan perubahan positif dalam mengatur
+            keuangan mereka. Dengar cerita sukses mereka!
           </p>
         </div>
 
@@ -105,7 +116,10 @@ export default function Testimonials() {
                 {/* Stars */}
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                    <Star
+                      key={i}
+                      className="w-6 h-6 fill-yellow-400 text-yellow-400"
+                    />
                   ))}
                 </div>
 
@@ -120,7 +134,8 @@ export default function Testimonials() {
                     {testimonials[currentTestimonial].name}
                   </div>
                   <div className="text-muted-foreground text-lg">
-                    {testimonials[currentTestimonial].role} • {testimonials[currentTestimonial].location}
+                    {testimonials[currentTestimonial].role} •{" "}
+                    {testimonials[currentTestimonial].location}
                   </div>
                 </div>
               </div>
@@ -142,9 +157,9 @@ export default function Testimonials() {
                 onClick={() => setCurrentTestimonial(index)}
                 className={cn(
                   "h-2 rounded-full transition-all duration-300",
-                  index === currentTestimonial 
-                    ? 'bg-primary w-8' 
-                    : 'bg-muted w-2 hover:bg-primary/50'
+                  index === currentTestimonial
+                    ? "bg-primary w-8"
+                    : "bg-muted w-2 hover:bg-primary/50"
                 )}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -155,11 +170,13 @@ export default function Testimonials() {
         {/* Grid of Mini Testimonials */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.slice(0, 6).map((testimonial, index) => (
-            <div 
+            <div
               key={testimonial.id}
               className={cn(
                 "bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
-                index === currentTestimonial ? 'ring-2 ring-primary/50 bg-primary/5' : ''
+                index === currentTestimonial
+                  ? "ring-2 ring-primary/50 bg-primary/5"
+                  : ""
               )}
             >
               <div className="flex items-center justify-between mb-6">
@@ -178,7 +195,10 @@ export default function Testimonials() {
                 </div>
                 <div className="flex space-x-0.5">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                    />
                   ))}
                 </div>
               </div>
@@ -195,5 +215,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }
