@@ -66,17 +66,19 @@ export async function generateExpenseInsights(
     3. Money-saving opportunities
     4. Positive reinforcement for good habits
 
-    answer in indonesian language.
-
-    Return only valid JSON array, no additional text.`;
+    IMPORTANT:
+    - Respond ONLY in Bahasa Indonesia.
+    - Use a professional yet friendly tone (Financial Advisor persona).
+    - Be specific with numbers and dates from the data.
+    - Return ONLY valid JSON array, no markdown formatting, no additional text.`;
 
     const completion = await openai.chat.completions.create({
-      model: 'deepseek/deepseek-chat-v3-0324:free',
+      model: 'tngtech/deepseek-r1t2-chimera:free',
       messages: [
         {
           role: 'system',
           content:
-            'You are a financial advisor AI that analyzes spending patterns and provides actionable insights. Always respond with valid JSON only.',
+            'You are a professional Financial Advisor AI for Indonesian users. You analyze spending patterns and provide actionable, personalized insights in Bahasa Indonesia. You MUST return strict JSON format only.',
         },
         {
           role: 'user',
@@ -161,9 +163,10 @@ export async function generateAIAnswer(
     3. Offers actionable advice
     4. Keeps the response concise but informative (2-3 sentences)
 
-    answer in indonesian language.
-    
-    Return only the answer text, no additional formatting.`;
+    IMPORTANT:
+    - Respond ONLY in Bahasa Indonesia.
+    - Use a professional yet friendly tone.
+    - Return only the answer text, no additional formatting.`;
 
     const completion = await openai.chat.completions.create({
       model: 'deepseek/deepseek-chat-v3-0324:free',
@@ -171,7 +174,7 @@ export async function generateAIAnswer(
         {
           role: 'system',
           content:
-            'You are a helpful financial advisor AI that provides specific, actionable answers based on expense data. Be concise but thorough.',
+            'You are a helpful Financial Advisor AI for Indonesian users. You provide specific, actionable answers based on expense data in Bahasa Indonesia. Be concise but thorough.',
         },
         {
           role: 'user',

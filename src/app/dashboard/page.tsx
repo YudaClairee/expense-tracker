@@ -8,6 +8,8 @@ import { ExpenseChart } from '@/components/dashboard/ExpenseChart';
 import ExpenseStatistics from '@/components/dashboard/ExpenseStatistics';
 import AIInsights from '@/components/dashboard/AIInsights';
 
+import HistoricalExpenseTable from '@/components/dashboard/HistoricalExpenseTable';
+
 export default async function page() {
 
   const user = await currentUser();
@@ -41,6 +43,10 @@ export default async function page() {
 
       <div className='mt-10 w-full'>
         <AIInsights />
+      </div>
+
+      <div className='mt-10 w-full'>
+        <HistoricalExpenseTable />
       </div>
     </div>
   )
