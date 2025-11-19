@@ -8,6 +8,9 @@ import HistoricalExpenseTable from "@/components/dashboard/HistoricalExpenseTabl
 import { SignOutButton } from "@clerk/nextjs";
 import { LogOut } from "lucide-react";
 
+// Force dynamic rendering (no static generation at build time)
+export const dynamic = "force-dynamic";
+
 export default async function page() {
   const user = await currentUser();
 
