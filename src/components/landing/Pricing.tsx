@@ -1,8 +1,6 @@
-'use client'
-
-import { Check, Clock, Zap, Crown, Sparkles } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Check, Clock, Zap, Crown, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const plans = [
   {
@@ -14,13 +12,13 @@ const plans = [
       "5 kategori custom",
       "Laporan bulanan",
       "Sinkronisasi 2 akun bank",
-      "Support email"
+      "Support email",
     ],
     popular: false,
     available: true,
     icon: Zap,
     color: "border-border bg-card",
-    buttonVariant: "outline" as const
+    buttonVariant: "outline" as const,
   },
   {
     name: "Pro",
@@ -34,13 +32,13 @@ const plans = [
       "Budget planning & alerts",
       "Sinkronisasi unlimited akun",
       "Export ke Excel/PDF",
-      "Priority support"
+      "Priority support",
     ],
     popular: true,
     available: false,
     icon: Crown,
     color: "border-primary/50 bg-primary/5 shadow-2xl shadow-primary/10",
-    buttonVariant: "default" as const
+    buttonVariant: "default" as const,
   },
   {
     name: "Enterprise",
@@ -53,19 +51,22 @@ const plans = [
       "Custom reporting",
       "Dedicated account manager",
       "SLA 99.9% uptime",
-      "White-label solution"
+      "White-label solution",
     ],
     popular: false,
     available: false,
     icon: Sparkles,
     color: "border-border bg-card",
-    buttonVariant: "outline" as const
-  }
-]
+    buttonVariant: "outline" as const,
+  },
+];
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section
+      id="pricing"
+      className="py-24 lg:py-32 bg-background relative overflow-hidden"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-0 w-full h-1/2 bg-gradient-to-r from-primary/5 via-chart-2/5 to-primary/5 blur-3xl transform -skew-y-6"></div>
@@ -76,11 +77,13 @@ export default function Pricing() {
         <div className="text-center space-y-4 mb-20">
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground tracking-tight">
             Pilih Paket yang
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-chart-2 block mt-2">Sesuai Kebutuhan</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-chart-2 block mt-2">
+              Sesuai Kebutuhan
+            </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Mulai gratis dan upgrade sesuai kebutuhan. Semua paket dilengkapi dengan keamanan bank-grade 
-            dan support terbaik dari tim kami.
+            Mulai gratis dan upgrade sesuai kebutuhan. Semua paket dilengkapi
+            dengan keamanan bank-grade dan support terbaik dari tim kami.
           </p>
         </div>
 
@@ -91,13 +94,21 @@ export default function Pricing() {
               <div className="p-2 bg-primary/20 rounded-full">
                 <Clock className="w-6 h-6 text-primary" />
               </div>
-              <span className="text-xl font-bold text-foreground">Paket Premium Coming Soon!</span>
+              <span className="text-xl font-bold text-foreground">
+                Paket Premium Coming Soon!
+              </span>
             </div>
             <p className="text-muted-foreground mb-6 text-lg">
-              Kami sedang mempersiapkan fitur-fitur canggih untuk paket Pro dan Enterprise. 
-              Daftar waitlist sekarang dan dapatkan <span className="font-bold text-primary">early bird discount hingga 50%!</span>
+              Kami sedang mempersiapkan fitur-fitur canggih untuk paket Pro dan
+              Enterprise. Daftar waitlist sekarang dan dapatkan{" "}
+              <span className="font-bold text-primary">
+                early bird discount hingga 50%!
+              </span>
             </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20"
+            >
               Join Waitlist
             </Button>
           </div>
@@ -106,12 +117,14 @@ export default function Pricing() {
         {/* Pricing Cards */}
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           {plans.map((plan, index) => (
-            <div 
+            <div
               key={index}
               className={cn(
                 "relative border-2 rounded-3xl p-8 transition-all duration-300",
                 plan.color,
-                plan.popular ? 'scale-105 z-10' : 'hover:-translate-y-2 opacity-80 hover:opacity-100'
+                plan.popular
+                  ? "scale-105 z-10"
+                  : "hover:-translate-y-2 opacity-80 hover:opacity-100"
               )}
             >
               {/* Popular Badge */}
@@ -134,49 +147,70 @@ export default function Pricing() {
               )}
 
               {/* Icon */}
-              <div className={cn(
-                "inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6",
-                plan.available ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'
-              )}>
+              <div
+                className={cn(
+                  "inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6",
+                  plan.available
+                    ? "bg-primary/10 text-primary"
+                    : "bg-muted text-muted-foreground"
+                )}
+              >
                 <plan.icon className="w-7 h-7" />
               </div>
 
               {/* Plan Info */}
               <div className="space-y-4 mb-8">
-                <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
+                <h3 className="text-2xl font-bold text-foreground">
+                  {plan.name}
+                </h3>
                 <div className="space-y-1">
                   <div className="flex items-baseline space-x-1">
-                    <span className="text-4xl font-bold text-foreground">{plan.price}</span>
+                    <span className="text-4xl font-bold text-foreground">
+                      {plan.price}
+                    </span>
                     {plan.period && (
-                      <span className="text-muted-foreground text-sm font-medium">{plan.period}</span>
+                      <span className="text-muted-foreground text-sm font-medium">
+                        {plan.period}
+                      </span>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{plan.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {plan.description}
+                  </p>
                 </div>
               </div>
 
               {/* Features */}
               <div className="space-y-4 mb-8">
                 {plan.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-start space-x-3">
-                    <div className={cn(
-                      "w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5",
-                      plan.available ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'
-                    )}>
+                  <div
+                    key={featureIndex}
+                    className="flex items-start space-x-3"
+                  >
+                    <div
+                      className={cn(
+                        "w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5",
+                        plan.available
+                          ? "bg-primary/20 text-primary"
+                          : "bg-muted text-muted-foreground"
+                      )}
+                    >
                       <Check className="w-3 h-3" />
                     </div>
-                    <span className="text-sm text-foreground/80">{feature}</span>
+                    <span className="text-sm text-foreground/80">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
 
               {/* CTA Button */}
-              <Button 
+              <Button
                 className="w-full h-12 text-base font-semibold"
                 variant={plan.buttonVariant}
                 disabled={!plan.available}
               >
-                {plan.available ? 'Mulai Sekarang' : 'Coming Soon'}
+                {plan.available ? "Mulai Sekarang" : "Coming Soon"}
               </Button>
             </div>
           ))}
@@ -185,28 +219,49 @@ export default function Pricing() {
         {/* FAQ Preview */}
         <div className="mt-24 text-center">
           <div className="bg-card border border-border rounded-3xl p-8 lg:p-12 max-w-4xl mx-auto shadow-sm">
-            <h3 className="text-2xl font-bold text-foreground mb-8">Frequently Asked Questions</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-8">
+              Frequently Asked Questions
+            </h3>
             <div className="grid md:grid-cols-2 gap-8 text-left">
               <div>
-                <h4 className="font-bold text-foreground mb-2 text-lg">Kapan paket Pro tersedia?</h4>
-                <p className="text-muted-foreground leading-relaxed">Paket Pro akan launch dalam Q2 2024. Join waitlist untuk update terbaru!</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">
+                  Kapan paket Pro tersedia?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Paket Pro akan launch dalam Q2 2024. Join waitlist untuk
+                  update terbaru!
+                </p>
               </div>
               <div>
-                <h4 className="font-bold text-foreground mb-2 text-lg">Apakah ada trial gratis?</h4>
-                <p className="text-muted-foreground leading-relaxed">Ya! Paket Pro akan include 14 hari trial gratis tanpa commitment.</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">
+                  Apakah ada trial gratis?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Ya! Paket Pro akan include 14 hari trial gratis tanpa
+                  commitment.
+                </p>
               </div>
               <div>
-                <h4 className="font-bold text-foreground mb-2 text-lg">Bisa upgrade/downgrade kapan saja?</h4>
-                <p className="text-muted-foreground leading-relaxed">Tentu! Kamu bisa ubah paket kapan saja sesuai kebutuhan.</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">
+                  Bisa upgrade/downgrade kapan saja?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Tentu! Kamu bisa ubah paket kapan saja sesuai kebutuhan.
+                </p>
               </div>
               <div>
-                <h4 className="font-bold text-foreground mb-2 text-lg">Bagaimana dengan keamanan data?</h4>
-                <p className="text-muted-foreground leading-relaxed">Semua paket menggunakan enkripsi bank-grade dan compliance ISO 27001.</p>
+                <h4 className="font-bold text-foreground mb-2 text-lg">
+                  Bagaimana dengan keamanan data?
+                </h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Semua paket menggunakan enkripsi bank-grade dan compliance ISO
+                  27001.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
