@@ -18,18 +18,19 @@ export const metadata: Metadata = {
   description: "Track your spending and save money",
 };
 
+const publish = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider publishableKey={publish}>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
-          
+        >
           {children}
         </body>
       </html>

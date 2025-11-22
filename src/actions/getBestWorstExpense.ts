@@ -1,4 +1,4 @@
-'use server'
+"use server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 
@@ -10,28 +10,28 @@ async function getBestWorstExpense(): Promise<{
   const { userId } = await auth();
 
   if (!userId) {
-    return { error: "User tidak ditemukan" }
+    return { error: "User tidak ditemukan" };
   }
 
   try {
     const records = await prisma.record.findMany({
-      where: {userId},
-      select: {amount: true},
-    })
+      where: { userId },
+      select: { amount: true },
+    });
 
     if (!records || records.length === 0) {
-      return {bestExpense: 0, worstExpense: 0};
+      return { bestExpense: 0, worstExpense: 0 };
     }
 
     const amounts = records.map((record) => record.amount);
 
-    const bestExpense = Math.max(...amounts); // Highest amount
-    const worstExpense = Math.min(...amounts); // Lowest amount
+    const worstExpense = Math.max(...amounts); // Highest amount
+    const bestExpense = Math.min(...amounts); // Lowest amount
 
-    return {bestExpense, worstExpense};
+    return { bestExpense, worstExpense };
   } catch (error) {
-    console.error('Error fetching best and worst expense:', error);
-    return {error: 'Database error'};
+    console.error("Error fetching best and worst expense:", error);
+    return { error: "Database error" };
   }
 }
 
