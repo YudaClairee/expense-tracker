@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Spend Sense",
+  title: "WallyAI - AI for Expense Tracker",
   description: "Track your spending and save money",
 };
 
